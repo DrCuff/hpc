@@ -1,0 +1,15 @@
+[bootstrap]
+curve_cert = "/home/fluxuser/test.cert"
+
+hosts = [
+  { host="flux1", bind="tcp://eth0:8060", connect="tcp://flux1:8060" },
+  { host="flux2", bind="tcp://eth0:8060", connect="tcp://flux2:8060" },
+  { host="flux3", bind="tcp://eth0:8060", connect="tcp://flux3:8060" },
+  { host="flux4", bind="tcp://eth0:8060", connect="tcp://flux4:8060" },
+  { host="flux5", bind="tcp://eth0:8060", connect="tcp://flux5:8060" },
+  { host="flux6", bind="tcp://eth0:8060", connect="tcp://flux6:8060" },
+  { host="flux7", bind="tcp://eth0:8060", connect="tcp://flux7:8060" },
+  { host="flux8", bind="tcp://eth0:8060", connect="tcp://flux8:8060" },
+  { host="flux9", bind="tcp://eth0:8060", connect="tcp://flux9:8060" },
+  { host="flux10", bind="tcp://eth0:8060", connect="tcp://flux10:8060" },
+]
