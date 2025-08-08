@@ -2,10 +2,13 @@
 
 # make a little 10 node test cluster using fluxrm/flux-sched:latest, patches it up with ssh and things
 
-# stop cluster
+# Remember: do this for podman preflight:
+# podman network create flux_net
+
+# to stop the cluster
 # for i in {1..10}; do podman stop flux$i; done
 
-# initial setup - replace all the things, blank slate, hostname needs to be done at start
+# initial setup - replace all the things, blank slate, hostname needs to be done at start, and network create above
 
 for i in {1..10}; do podman run -dit --replace --hostname flux$i --network flux_net --name flux$i fluxrm/flux-sched:latest; done
 
