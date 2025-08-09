@@ -22,7 +22,8 @@ RUN dnf -y install \
 	patch \
 	diffutils \
 	hostname \
-        sshd \
+ 	sshd \
+  	pdsh pdsh-rcmd-ssh \
 #  Compilers, autotools
 	pkgconfig \
 	libtool \
@@ -99,6 +100,12 @@ RUN systemctl enable sshd
 #RUN mkdir /root/.ssh/
 COPY id_ed25519.pub /root/.ssh/authorized_keys
 RUN chmod 600 /root/.ssh/authorized_keys
+
+# sort out munge - copy from host
+COPY /etc/munge/munge.key /etc/munge/munge.key && \
+chmod 600 /etc/munge.key && \
+chown munge:munge /etc/munge.key
+
 
 # the psm3 connector added to libfabrics in ~1.12 causes errors when allowed to
 # use non-local connectors on a system with virtual NICs, since we're in a
