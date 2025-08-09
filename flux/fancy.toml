@@ -1,0 +1,16 @@
+[bootstrap]
+
+curve_cert = "/home/fluxuser/test.cert"
+
+default_port = 8060
+default_bind = "tcp://eth0:%p"
+default_connect = "tcp://%h:%p"
+
+hosts = [
+    # Management requires non-default config
+    { host="hmxlabs-hpl", bind="tcp://podman2:8060", connect="tcp://10.89.1.1:8060" },
+
+    # Other nodes use defaults
+    { host = "flux[1-10]" },
+]
+
