@@ -1,7 +1,7 @@
 # general hpc things
 
-Dumping ground for slurm, flux and other things
+Dumping ground for all things HPC, slurm, flux and other bits and pieces.
 
-Flux work:
+NOTHING WILL WORK HERE!
 
 
