@@ -76,7 +76,57 @@ Aug 09 17:28:29 hmxlabs-hpl flux[1302184]: broker: broker.sd_notify is set but F
 Aug 09 17:28:29 hmxlabs-hpl systemd[1]: flux.service: Main process exited, code=exited, status=1/FAILURE
 ```
 
+ok this seems to be straightforward need a dep with systemd so the build picks it up.  let's build again after adding a dnf install systemd-devel...
 
+yep that did it!
+
+```
+[root@hmxlabs-hpl flux-rpm]# systemctl start flux 
+[root@hmxlabs-hpl flux-rpm]# journalctl -xeu flux.service
+Aug 09 17:40:42 hmxlabs-hpl systemd[1]: Stopped flux.service - Flux message broker.
+░░ Subject: A stop job for unit flux.service has finished
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A stop job for unit flux.service has finished.
+░░ 
+░░ The job identifier is 15816 and the job result is done.
+Aug 09 17:40:42 hmxlabs-hpl systemd[1]: flux.service: Consumed 1.024s CPU time, 21.6M memory peak.
+░░ Subject: Resources consumed by unit runtime
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ The unit flux.service completed and consumed the indicated resources.
+Aug 09 17:40:45 hmxlabs-hpl systemd[1]: Starting flux.service - Flux message broker...
+░░ Subject: A start job for unit flux.service has begun execution
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit flux.service has begun execution.
+░░ 
+░░ The job identifier is 15817.
+Aug 09 17:40:46 hmxlabs-hpl flux[1358309]: broker.info[0]: start: none->join 0.243368ms
+Aug 09 17:40:46 hmxlabs-hpl flux[1358309]: broker.info[0]: parent-none: join->init 0.087679ms
+Aug 09 17:40:46 hmxlabs-hpl systemd[1]: Started flux.service - Flux message broker.
+░░ Subject: A start job for unit flux.service has finished successfully
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit flux.service has finished successfully.
+░░ 
+░░ The job identifier is 15817.
+Aug 09 17:40:46 hmxlabs-hpl flux[1358309]: sdbus.info[0]: unix:path=/run/user/500/bus: connected
+Aug 09 17:40:46 hmxlabs-hpl flux[1358309]: sdbus-sys.info[0]: sd_bus_open_system: connected
+Aug 09 17:40:46 hmxlabs-hpl flux[1358309]: broker.info[0]: rc1.0: restoring content from /var/lib/flux/dump/20250809_174042.tgz
+Aug 09 17:40:46 hmxlabs-hpl flux[1358309]: kvs.info[0]: restored KVS from checkpoint on 2025-08-09T17:40:42Z
+Aug 09 17:40:46 hmxlabs-hpl flux[1358309]: cron.info[0]: synchronizing cron tasks to event heartbeat.pulse
+Aug 09 17:40:46 hmxlabs-hpl flux[1358309]: job-manager.info[0]: restart: 0 jobs
+Aug 09 17:40:46 hmxlabs-hpl flux[1358309]: job-manager.info[0]: restart: 0 running jobs
+Aug 09 17:40:46 hmxlabs-hpl flux[1358309]: broker.info[0]: rc1.0: /etc/flux/rc1 Exited (rc=0) 0.4s
+Aug 09 17:40:46 hmxlabs-hpl flux[1358309]: broker.info[0]: rc1-success: init->quorum 0.409916s
+Aug 09 17:40:46 hmxlabs-hpl flux[1358309]: broker.info[0]: online: hmxlabs-hpl (ranks 0)
+Aug 09 17:40:46 hmxlabs-hpl flux[1358309]: broker.info[0]: quorum-full: quorum->run 0.100978s
+```
 
 # background
 
