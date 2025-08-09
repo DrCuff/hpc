@@ -1,3 +1,5 @@
+Quick and dirty way to get ten nodes stood up with flux installed inside them.  Some unnatural acts of computing here to make it so that you can use podman and fedora 42 to connect the initial host and the ten pods together in a "flux".
+
 # fetch the latest code
 ```
 ./get_latest.sh
