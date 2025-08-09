@@ -9,16 +9,16 @@ podman build -t cuff_flux .
 ```
 
 # run
+```
 ./start_cluster.sh
-
+```
 # copy the toml
-
 ```
 [root@hmxlabs-hpl cuffbuild]# for i in {1..10}; do podman cp remote.toml flux$i:/home/fluxuser/test.toml; done
 ```
 
 # results
-
+```
 [root@hmxlabs-hpl cuffbuild]# pdsh -N -w flux[1-10],hmxlabs-hpl flux start -o,--config-path=/home/fluxuser/test.toml flux resource list
      STATE NNODES NCORES NGPUS NODELIST
       free     11     88     0 hmxlabs-hpl,flux[1-10]
