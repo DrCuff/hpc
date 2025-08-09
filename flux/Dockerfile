@@ -97,14 +97,16 @@ make -j 16 install
 # stand up ssh
 RUN systemctl enable sshd
 
-#RUN mkdir /root/.ssh/
+# you need an ssh key and a munge.key in your repo
+RUN mkdir /root/.ssh/
 COPY id_ed25519.pub /root/.ssh/authorized_keys
 RUN chmod 600 /root/.ssh/authorized_keys
 
 # sort out munge - copy from host
-COPY /etc/munge/munge.key /etc/munge/munge.key && \
-chmod 600 /etc/munge.key && \
-chown munge:munge /etc/munge.key
+COPY munge.key /etc/munge/munge.key
+RUN chmod 600 /etc/munge/munge.key && \
+chown munge:munge /etc/munge/munge.key
+
 
 
 # the psm3 connector added to libfabrics in ~1.12 causes errors when allowed to
