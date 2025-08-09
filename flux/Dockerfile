@@ -106,6 +106,7 @@ RUN chmod 600 /root/.ssh/authorized_keys
 COPY munge.key /etc/munge/munge.key
 RUN chmod 600 /etc/munge/munge.key && \
 chown munge:munge /etc/munge/munge.key
+RUN systemctl enable munge
 
 
 
