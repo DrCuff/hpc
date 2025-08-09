@@ -44,10 +44,25 @@ b18191cc024d  localhost/cuff_flux:latest              8 minutes ago  Up 8 minute
 
 Now to implement the material [here](https://flux-framework.readthedocs.io/projects/flux-core/en/latest/guide/admin.html#do-i-have-all-the-right-packages-installed):
 
+OK so the toml thing is easier than we thought, defaults can get read from /root/local/etc/flux/system/conf.d/ on the master so we can in theory just drop them in to the right places:
 
-Extra bits
+Head node:
+```
+[root@hmxlabs-hpl flux]# cp /home/fluxuser/test.toml /root/local/etc/flux/system/conf.d/
 
-# getting munge up on fedora host image and check it works:
+[root@hmxlabs-hpl flux]# flux config get --config-path=system
+{"bootstrap":{"curve_cert":"/home/fluxuser/test.cert","default_port":8060,"default_bind":"tcp://eth0:%p","default_connect":"tcp://%h:%p","hosts":[{"host":"hmxlabs-hpl","bind":"tcp://podman2:8060","connect":"tcp://10.89.1.1:8060"},{"host":"flux[1-10]"}]}}
+```
+
+Pods:
+```
+[root@hmxlabs-hpl flux]# pdsh -w flux[1-10] mkdir /usr/local/etc/flux/system/conf.d
+[root@hmxlabs-hpl flux]# pdcp -w flux[1-10] /root/local/etc/flux/system/conf.d/test.toml /usr/local/etc/flux/system/conf.d/
+```
+
+## Extra bits
+
+Getting munge up on fedora host image and check it works:
 ```
 [root@hmxlabs-hpl ~]# sudo dd if=/dev/urandom bs=1 count=1024 > /etc/munge/munge.key ; chmod 600 /etc/munge/munge.key ; chown munge:munge /etc/munge/munge.key
 1024+0 records in
