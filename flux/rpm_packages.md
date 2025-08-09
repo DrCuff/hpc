@@ -55,6 +55,29 @@ we have not built accounting yet, it needs "imp" and we are now running a python
 
 > The error "ModuleNotFoundError: No module named 'imp'" indicates that the imp module cannot be found by your Python installation. This typically occurs in Python versions 3.12 and later because the imp module was deprecated in Python 3.4 and subsequently removed in Python 3.12.
 
+we also need to add a flux user.
+
+```
+adduser flux
+vipw (I changed uid to 500, not sure it matters)
+```
+
+DOh!  we are going to have to work out how to build flux with systemd.
+```
+Aug 09 17:28:29 hmxlabs-hpl systemd[1]: Starting flux.service - Flux message broker...
+░░ Subject: A start job for unit flux.service has begun execution
+░░ Defined-By: systemd
+░░ Support: https://lists.freedesktop.org/mailman/listinfo/systemd-devel
+░░ 
+░░ A start job for unit flux.service has begun execution.
+░░ 
+░░ The job identifier is 12080.
+Aug 09 17:28:29 hmxlabs-hpl flux[1302184]: broker: broker.sd_notify is set but Flux was not built with systemd support>
+Aug 09 17:28:29 hmxlabs-hpl systemd[1]: flux.service: Main process exited, code=exited, status=1/FAILURE
+```
+
+
+
 # background
 
 Packages
