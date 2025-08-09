@@ -3,7 +3,6 @@ We are going to need systemd packages in our case for fedora.
 Enterprising folks have setup an RPM package [here](https://gitlab.jsc.fz-juelich.de/maloney2/flux-rpm)
 
 So far we have needed:
-
 ```
   634  git clone https://gitlab.jsc.fz-juelich.de/maloney2/flux-rpm.git
   635  cd flux-rpm/
@@ -14,7 +13,17 @@ So far we have needed:
   644  make
   645  dnf install munge-devel
 ```
-Then you can do make.
+
+Then you can do make, this builds security RPM which you install to them make the rest of it:
+```
+[root@hmxlabs-hpl flux-rpm]# rpm -i RPMS/x86_64/flux-security-0.14.0-1.fc42.x86_64.rpm 
+[root@hmxlabs-hpl flux-rpm]# make rpm_core
+rpmbuild  -bb SPECS/flux-core.spec \
+--define "_topdir /root/flux/cuffbuild/flux-rpm" \
+--define "_disable_source_fetch 0"
+setting SOURCE_DATE_EPOCH=1754438400
+etc...
+```
 
 # background
 
