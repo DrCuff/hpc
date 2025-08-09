@@ -1,3 +1,14 @@
+
+Holy grail achived!
+
+```
+[root@hmxlabs-hpl cuffbuild]# flux resource list
+     STATE NNODES NCORES NGPUS NODELIST
+      free      1      8     1 hmxlabs-hpl
+ allocated      0      0     0 
+      down     10     80    10 flux[1-10]
+```
+
 We are going to need system level packages in our case for fedora42.
 
 Enterprising folks have setup an RPM package [here](https://gitlab.jsc.fz-juelich.de/maloney2/flux-rpm)
