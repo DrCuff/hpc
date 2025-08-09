@@ -42,6 +42,11 @@ b18191cc024d  localhost/cuff_flux:latest              8 minutes ago  Up 8 minute
 
 ```
 
+Now to implement the material [here](https://flux-framework.readthedocs.io/projects/flux-core/en/latest/guide/admin.html#do-i-have-all-the-right-packages-installed):
+
+
+Extra bits
+
 # getting munge up on fedora host image and check it works:
 ```
 [root@hmxlabs-hpl ~]# sudo dd if=/dev/urandom bs=1 count=1024 > /etc/munge/munge.key ; chmod 600 /etc/munge/munge.key ; chown munge:munge /etc/munge/munge.key
