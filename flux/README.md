@@ -1,8 +1,12 @@
-#fetch the latest code
+# fetch the latest code
+```
 ./get_latest.sh
+```
 
-#build
+# build
+```
 podman build -t cuff_flux .
+```
 
 # run
 ./start_cluster.sh
@@ -11,7 +15,9 @@ podman build -t cuff_flux .
 
 ```
 [root@hmxlabs-hpl cuffbuild]# for i in {1..10}; do podman cp remote.toml flux$i:/home/fluxuser/test.toml; done
+```
 
+# results
 
 [root@hmxlabs-hpl cuffbuild]# pdsh -N -w flux[1-10],hmxlabs-hpl flux start -o,--config-path=/home/fluxuser/test.toml flux resource list
      STATE NNODES NCORES NGPUS NODELIST
