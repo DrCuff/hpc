@@ -19,11 +19,6 @@ podman build -t cuff_flux .
 
 # results
 ```
-[root@hmxlabs-hpl cuffbuild]# pdsh -N -w flux[1-10],hmxlabs-hpl flux start -o,--config-path=/home/fluxuser/test.toml flux resource list
-     STATE NNODES NCORES NGPUS NODELIST
-      free     11     88     0 hmxlabs-hpl,flux[1-10]
- allocated      0      0     0 
-      down      0      0     0 
 [root@hmxlabs-hpl cuffbuild]# podman ps
 CONTAINER ID  IMAGE                       COMMAND     CREATED        STATUS        PORTS       NAMES
 d05db7eea892  localhost/cuff_flux:latest              8 minutes ago  Up 8 minutes              flux1
