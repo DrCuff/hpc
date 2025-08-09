@@ -2,8 +2,23 @@ We are going to need systemd packages in our case for fedora.
 
 Enterprising folks have setup an RPM package [here](https://gitlab.jsc.fz-juelich.de/maloney2/flux-rpm)
 
+So far we have needed:
 
-Packages
+```
+  634  git clone https://gitlab.jsc.fz-juelich.de/maloney2/flux-rpm.git
+  635  cd flux-rpm/
+  636  ls
+  637  make
+  638  dnf install rpmbuild pam-devel
+  643  ./install-deps.sh 
+  644  make
+  645  dnf install munge-devel
+```
+Then you can do make.
+
+# background
+
+Packages
 
 RPM packages for TOSS 4 (RHEL 8 based) are produced by the TOSS build system and 
 can be made available externally on request. When requested, these are manually 
