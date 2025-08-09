@@ -8,6 +8,8 @@ podman build -t cuff_flux .
 ./start_cluster.sh
 
 # copy the toml
+
+```
 [root@hmxlabs-hpl cuffbuild]# for i in {1..10}; do podman cp remote.toml flux$i:/home/fluxuser/test.toml; done
 
 
@@ -35,3 +37,4 @@ b18191cc024d  localhost/cuff_flux:latest              8 minutes ago  Up 8 minute
  allocated      0      0     0 
       down      0      0     0 
 
+```
