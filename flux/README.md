@@ -1,25 +1,31 @@
-Quick and dirty way to get ten nodes stood up with flux installed inside them.  Some unnatural acts of computing here to make it so that you can use podman and fedora 42 to connect the initial host and the ten pods together in a "flux".
+# A voyage of making flux work outside of a national lab. 
 
-# fetch the latest code
+ref:  https://bsky.app/profile/chromamagic.com/post/3lvyfl4tuus2c
+
+
+
+Quick and dirty way to get ten nodes stood up with flux installed inside them.  Some unnatural acts of computing here to make it so that you can use podman and fedora 42 to connect the initial host and the ten pods together in a "flux".  It changed a lot since we decided to do this.  For now, here's some data:
+
+## fetch the latest code
 ```
 ./get_latest.sh
 ```
 
-# build
+## build
 ```
 podman build -t cuff_flux .
 ```
 
-# run
+## run
 ```
 ./start_cluster.sh
 ```
-# copy the toml
+## copy the toml
 ```
 [root@hmxlabs-hpl cuffbuild]# for i in {1..10}; do podman cp remote.toml flux$i:/home/fluxuser/test.toml; done
 ```
 
-# results
+## results
 ```
 [root@hmxlabs-hpl cuffbuild]# podman ps
 CONTAINER ID  IMAGE                       COMMAND     CREATED        STATUS        PORTS       NAMES
@@ -54,13 +60,13 @@ Head node:
 {"bootstrap":{"curve_cert":"/home/fluxuser/test.cert","default_port":8060,"default_bind":"tcp://eth0:%p","default_connect":"tcp://%h:%p","hosts":[{"host":"hmxlabs-hpl","bind":"tcp://podman2:8060","connect":"tcp://10.89.1.1:8060"},{"host":"flux[1-10]"}]}}
 ```
 
-Pods:
+## Pods:
 ```
 [root@hmxlabs-hpl flux]# pdsh -w flux[1-10] mkdir /usr/local/etc/flux/system/conf.d
 [root@hmxlabs-hpl flux]# pdcp -w flux[1-10] /root/local/etc/flux/system/conf.d/test.toml /usr/local/etc/flux/system/conf.d/
 ```
 
-## Extra bits
+### Extra bits
 
 Getting munge up on fedora host image and check it works:
 ```
