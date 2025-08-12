@@ -1,9 +1,9 @@
-we made some deb files here.  still missing flux_pam
-
-debs has the builds, everything else is to raise a normal debian to be able to flux
-
 
 ### time to make some debs, and get the gits!
+
+we made some deb files here.  still missing flux_pam
+debs directory here has the builds, [trixie_flux_buildhost.sh](https://github.com/DrCuff/hpc/blob/main/flux/Debian/trixie_flux_buildhost.sh) just raises a normal debian to be able to start and/or even build flux
+
 
 ### first become a user - tests get all super weird if not:
 ```sudo su - flux```
