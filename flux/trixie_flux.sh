@@ -61,9 +61,7 @@ apt install -y \
 
 # flux security
 wget https://github.com/flux-framework/flux-security/releases/download/v$FLUX_SECURITY_VERS/flux-security-$FLUX_SECURITY_VERS.tar.gz
-
 tar zxf flux-security-$FLUX_SECURITY_VERS.tar.gz 
-
 cd flux-security-$FLUX_SECURITY_VERS
 ./configure
 make -j8 install
@@ -72,11 +70,8 @@ cd ..
 
 # flux core
 wget https://github.com/flux-framework/flux-core/releases/download/v$FLUX_CORE_VERS/flux-core-$FLUX_CORE_VERS.tar.gz
-
 tar zxf flux-core-$FLUX_CORE_VERS.tar.gz 
-
 cd flux-core-$FLUX_CORE_VERS
-
 ./configure --with-flux-security --with-systemdsystemunitdir=/etc/systemd/system/ 
 make -j8 install
 
@@ -86,7 +81,6 @@ cd ..
 wget https://github.com/flux-framework/flux-pam/releases/download/v$FLUX_PAM_VERS/flux-pam-$FLUX_PAM_VERS.tar.gz
 tar zxf flux-pam-$FLUX_PAM_VERS.tar.gz 
 cd flux-pam-$FLUX_PAM_VERS
-
 ./configure
 make install
 
