@@ -7,6 +7,7 @@ jcuff@amdmini:~$ lxc init images:debian/13 --vm hmx-node-001
 Creating hmx-node-001
 jcuff@amdmini:~$ lxc start hmx-node-001
 ```
+
 (clean remote compute machine)
 
 ```
@@ -24,7 +25,7 @@ dpkg -i ./flux-sched_0.46.0_amd64.deb
 
 ```
 
-The toml will move to cloud-init, for now:
+The toml etc. will move to cloud-init, for now:
 
 ```
 mkdir /etc/flux/system/conf.d/
@@ -82,7 +83,7 @@ tcp_user_timeout = "2m"
 #exclude = "test[1-2]"
 
 [[resource.config]]
-hosts = "flux[1-10],hmx-flux-head"
+hosts = "hmx-node[001-010],hmx-flux-head"
 cores = "0-7"
 gpus = "0"
 
