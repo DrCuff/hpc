@@ -28,6 +28,7 @@ git clone --branch v0.49.0 https://github.com/flux-framework/flux-accounting.git
 _security first!_
 
 ```
+sudo /etc/init.d/munge stop (no idea why, but we have to do this!)
 cd flux-security
 autogen.sh
 ./configure
