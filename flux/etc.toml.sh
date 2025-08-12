@@ -116,3 +116,15 @@ pam-support = true
 
 EOF
 
+mkdir -p /etc/flux/security/conf.d/
+
+cat <<EOF > /etc/flux/security/conf.d/security.toml
+# Job requests should be valid for 2 weeks
+# Use munge as the job request signing mechanism
+[sign]
+max-ttl = 1209600  # 2 weeks
+default-type = "munge"
+allowed-types = [ "munge" ]
+
+EOF
+
