@@ -58,6 +58,9 @@ apt install -y \
   python3-jsonschema \
   devscripts \
   libpam-wrapper \
+  devscripts \
+  libpam-wrapper \
+  sqlite3 \
   wget
 
 
