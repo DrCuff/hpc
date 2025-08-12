@@ -56,6 +56,8 @@ apt install -y \
   libyaml-cpp-dev \
   python3-yaml \
   python3-jsonschema \
+  devscripts \
+  libpam-wrapper \
   wget
 
 
