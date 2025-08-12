@@ -12,9 +12,9 @@ git clone --branch v0.2.0 https://github.com/flux-framework/flux-pam.git
 git clone --branch v0.49.0 https://github.com/flux-framework/flux-accounting.git
 ```
 
-### buildy time.
+### it's buildy time!
 
-```apt install devscripts libpam-wrapper```
+```apt install devscripts libpam-wrapper sqlite3```
 
 ### set some things:
 ```
@@ -80,9 +80,27 @@ https://github.com/DrCuff/hpc/blob/main/flux/etc.toml.sh
 ### sched... (cuff, you need more disk space and DRAM for this build, stop being cheap)
 ```
 cd ../flux-sched
-autogen.sh
+./autogen.sh
 ./configure
 make -j8 deb
 ```
 
+### accounting.
+```
+cd ../flux-accounting
+./autogen.sh
+./configure
+make -j8 deb
+```
 
+## woof!
+```
+flux@hmx-flux-head:~/flux-accounting$ ls -ltra ../debs/
+total 5592
+-rw-rw-r-- 1 flux flux  668251 Aug 12 02:41 flux-security-0.14.0.tar.gz
+-rw-r--r-- 1 flux flux 4055060 Aug 12 02:50 flux-core_0.77.0-15-g185be1209_amd64.deb
+drwx------ 8 flux flux    4096 Aug 12 03:21 ..
+-rw-r--r-- 1 flux flux  819720 Aug 12 03:26 flux-sched_0.46.0_amd64.deb
+-rw-r--r-- 1 flux flux  162400 Aug 12 03:30 flux-accounting_0.49.0_amd64.deb
+drwxrwxr-x 2 flux flux    4096 Aug 12 03:30 .
+```
