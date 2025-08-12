@@ -1,20 +1,19 @@
+Here we made some deb files for flux.  
+debs directory here has the builds, [trixie_flux_buildhost.sh](https://github.com/DrCuff/hpc/blob/main/flux/Debian/trixie_flux_buildhost.sh) just raises a normal debian to be able to start and/or even build flux
+_WARNING: we are still missing flux_pam_
 
 ### time to make some debs, and get the gits!
 
-we made some deb files here.  still missing flux_pam
-debs directory here has the builds, [trixie_flux_buildhost.sh](https://github.com/DrCuff/hpc/blob/main/flux/Debian/trixie_flux_buildhost.sh) just raises a normal debian to be able to start and/or even build flux
-
-
-### first become a user - tests get all super weird if not:
+*first become a user - tests get all super weird if not*
 ```sudo su - flux```
 
-### set up some things:
+* set up some things:*
 ```
 git config --global user.name 'James Cuff'
 git config --global user.email james@witnix.com
 ```
 
-### get cloning!
+* get cloning! *  
 ```
 git clone --branch v0.14.0 https://github.com/flux-framework/flux-security.git
 git clone --branch v0.77.0 https://github.com/flux-framework/flux-core.git
@@ -26,7 +25,7 @@ git clone --branch v0.49.0 https://github.com/flux-framework/flux-accounting.git
 ### it's buildy time!
 
 
-### security first!
+* security first! *
 ```
 cd flux-security
 autogen.sh
@@ -35,11 +34,9 @@ make -j8 deb
 ```
 
 ### woot!
-
 ```-rw-r--r-- 1 flux flux  77408 Aug 12 02:18 debbuild/flux-security_0.14.0_amd64.deb```
 
-### can install?  (we have to, so we install)
-
+* can install?  (we have to, so we install)*
 ```sudo dpkg -i ./debbuild/flux-security_0.14.0_amd64.deb```
 
 ### yep!  onwards!
