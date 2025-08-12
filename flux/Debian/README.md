@@ -3,7 +3,7 @@ _WARNING: we are still missing flux_pam_
 
 ### time to make some debs, and get the gits!
 
-_first become a user - tests get all super weird if not_
+_first become a user - tests get all super weird if not, you know how to make a user right?  you just put your lips together and blow_
 
 ```sudo su - flux```
 
