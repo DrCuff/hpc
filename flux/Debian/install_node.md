@@ -1,14 +1,13 @@
 Work in progress!
 
 ```
-jcuff@amdmini:~$ lxc stop hmx-node-001
-jcuff@amdmini:~$ lxc delete hmx-node-001
-jcuff@amdmini:~$ lxc init images:debian/13 --vm hmx-node-001
-Creating hmx-node-001
-jcuff@amdmini:~$ lxc start hmx-node-001
+lxc stop hmx-node-001
+lxc delete hmx-node-001
+lxc init images:debian/13 --vm hmx-node-001
+lxc start hmx-node-001
 ```
 
-(clean remote compute machine)
+(clean remote compute machine - cloud-init-testing)
 
 ```
 adduser flux
