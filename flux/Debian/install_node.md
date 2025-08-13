@@ -4,6 +4,7 @@ Work in progress!
 lxc stop hmx-node-001
 lxc delete hmx-node-001
 lxc init images:debian/13 --vm hmx-node-001
+lxc config set hmx-node-001 limits.cpu 8
 lxc start hmx-node-001
 ```
 
@@ -12,7 +13,7 @@ lxc start hmx-node-001
 ```
 useradd flux
 
-sudo apt install -y wget libjansson4 libmunge2 libarchive13t64 libhwloc15 liblua5.1-0 libpython3.13 libzmq5 libboost-graph1.83.0 libyaml-cpp0.8
+sudo apt install -y wget libjansson4 libmunge2 libarchive13t64 libhwloc15 liblua5.1-0 libpython3.13 libzmq5 libboost-graph1.83.0 libyaml-cpp0.8 hwloc
 
 wget https://github.com/DrCuff/hpc/raw/refs/heads/main/flux/Debian/debs/flux-security_0.14.0_amd64.deb
 wget https://github.com/DrCuff/hpc/raw/refs/heads/main/flux/Debian/debs/flux-core_0.77.0-15-g185be1209_amd64.deb
