@@ -12,7 +12,9 @@ lxc start hmx-node-001
 
 testing need to ssh into it...
 
-lxc exec hmx-node-001 bash
+``` lxc exec hmx-node-001 bash ```
+
+This needs to run...
 
 ```
 useradd flux
