@@ -10,7 +10,7 @@ lxc start hmx-node-001
 (clean remote compute machine - cloud-init-testing)
 
 ```
-adduser flux
+useradd flux
 
 sudo apt install -y wget libjansson4 libmunge2 libarchive13t64 libhwloc15 liblua5.1-0 libpython3.13 libzmq5 libboost-graph1.83.0 libyaml-cpp0.8
 
