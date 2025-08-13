@@ -10,6 +10,10 @@ lxc start hmx-node-001
 
 (clean remote compute machine - cloud-init-testing)
 
+testing need to ssh into it...
+
+lxc exec hmx-node-001 bash
+
 ```
 useradd flux
 
