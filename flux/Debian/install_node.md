@@ -23,6 +23,8 @@ dpkg -i ./flux-core_0.77.0-15-g185be1209_amd64.deb
 dpkg -i ./flux-sched_0.46.0_amd64.deb
 
 flux keygen /etc/flux/test.cert
+chown flux:flux /etc/flux/test.cert
+chmod 600 /etc/flux/test.cert
 
 ```
 
@@ -138,6 +140,16 @@ allowed-shells = [ "/usr/lib/x86_64-linux-gnu/flux/flux-shell" ]
 
 # Enable the "flux" PAM stack (requires PAM configuration file)
 pam-support = true
+
+EOF
+
+cat <<EOF > /etc/flux/security/conf.d/security.toml
+# Job requests should be valid for 2 weeks
+# Use munge as the job request signing mechanism
+[sign]
+max-ttl = 1209600  # 2 weeks
+default-type = "munge"
+allowed-types = [ "munge" ]
 
 EOF
 ```
