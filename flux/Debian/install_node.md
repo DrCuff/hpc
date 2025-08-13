@@ -22,6 +22,8 @@ dpkg -i ./flux-security_0.14.0_amd64.deb
 dpkg -i ./flux-core_0.77.0-15-g185be1209_amd64.deb
 dpkg -i ./flux-sched_0.46.0_amd64.deb
 
+flux keygen /etc/flux/test.cert
+
 ```
 
 The toml etc. will move to cloud-init, for now:
@@ -40,7 +42,7 @@ hosts = [
     # Management requires non-default config
     { host="hmx-flux-head" },
     # Other nodes use defaults
-    { host = "flux[1-10]" },
+    { host = "hmx-node-00[1-10]" },
 ]
 EOF
 
